@@ -39,12 +39,16 @@ struct TextSizeSheet: View {
                     Image(systemName: "xmark")
                         .font(.system(size: 15, weight: .semibold))
                         .foregroundStyle(Color.primary)
+                        .frame(width: 40, height: 40)
+                        .contentShape(Rectangle())
                 }
             }
-            .padding(.horizontal, 24)
-            .frame(height: 40)
+            .padding(.leading, 24)
+            .padding(.trailing, 8)
+            .padding(.top, 8)
+            .frame(height: 48)
 
-            VStack(alignment: .leading, spacing: 0) {
+            VStack(alignment: .leading, spacing: 4) {
                 ForEach(TextSizeOption.allCases) { option in
                     Button {
                         selection = option
@@ -57,21 +61,22 @@ struct TextSizeSheet: View {
                                 .opacity(selection == option ? 1 : 0)
                             Text(option.label)
                                 .font(.system(size: option.pointSize))
-                            Spacer()
+                            Spacer(minLength: 0)
                         }
                         .foregroundStyle(Color.primary)
                         .padding(.vertical, 10)
-                        .padding(.horizontal, 24)
+                        .padding(.leading, 24)
+                        .padding(.trailing, 12)
+                        .frame(minHeight: 40)
                         .contentShape(Rectangle())
                     }
                     .buttonStyle(.plain)
                 }
             }
-            .padding(.top, 8)
-
-            Spacer(minLength: 0)
+            .padding(.top, 4)
+            .padding(.bottom, 16)
         }
-        .presentationDetents([.height(260)])
+        .presentationDetents([.height(240)])
         .presentationDragIndicator(.visible)
     }
 }

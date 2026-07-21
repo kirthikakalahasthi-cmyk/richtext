@@ -6,10 +6,8 @@ struct AddNoteView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var controller = RichTextController()
 
-    // Pre-filled with the mockup's sample text so there is content to format.
-    // Replace with `NSAttributedString(string: "")` for an empty note.
     @State private var note = NSAttributedString(
-        string: "Testing if this would work in the real world",
+        string: "",
         attributes: [
             .font: UIFont.systemFont(ofSize: 17),
             .foregroundColor: UIColor.label
